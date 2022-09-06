@@ -1,5 +1,6 @@
 import { LOCAL_STORAGE_EXISTS } from "../constants";
 import { SALEOR_AUTH_PLUGIN_ID, SALEOR_CSRF_TOKEN } from "./constants";
+import Cookies from "js-cookie";
 
 export let storage: {
   setAuthPluginId: (method: string | null) => void;
@@ -22,7 +23,9 @@ export const createStorage = (autologinEnabled: boolean): void => {
   let accessToken: string | null = null;
   let csrfToken: string | null =
     autologinEnabled && LOCAL_STORAGE_EXISTS
-      ? localStorage.getItem(SALEOR_CSRF_TOKEN)
+      ? localStorage.getItem(SALEOR_CSRF_TOKEN) ||
+        Cookies.get(SALEOR_CSRF_TOKEN) ||
+        null
       : null;
 
   const setAuthPluginId = (pluginId: string | null): void => {
