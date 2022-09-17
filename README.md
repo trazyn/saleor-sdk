@@ -1,4 +1,4 @@
-<div align="center">
+useAuthState<div align="center">
   <h1>Saleor SDK</h1>
 </div>
 

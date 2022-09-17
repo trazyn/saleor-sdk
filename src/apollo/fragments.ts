@@ -37,26 +37,13 @@ export const userBaseFragment = gql`
     firstName
     lastName
     isStaff
+    lastLogin
   }
 `;
 
 export const userDetailsFragment = gql`
-  ${addressFragment}
   ${userBaseFragment}
   fragment UserDetailsFragment on User {
     ...UserBaseFragment
-    metadata {
-      key
-      value
-    }
-    defaultShippingAddress {
-      ...AddressFragment
-    }
-    defaultBillingAddress {
-      ...AddressFragment
-    }
-    addresses {
-      ...AddressFragment
-    }
   }
 `;
