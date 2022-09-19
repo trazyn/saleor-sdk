@@ -11292,7 +11292,10 @@ export type AddressFragment = (
 
 export type UserBaseFragment = Pick<User, 'id' | 'email' | 'firstName' | 'lastName' | 'isStaff' | 'lastLogin'>;
 
-export type UserDetailsFragment = UserBaseFragment;
+export type UserDetailsFragment = (
+  { avatar: Maybe<Pick<Image, 'url'>> }
+  & UserBaseFragment
+);
 
 export type LoginWithoutDetailsMutationVariables = Exact<{
   email: Scalars['String'];

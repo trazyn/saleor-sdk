@@ -45,5 +45,9 @@ export const userDetailsFragment = gql`
   ${userBaseFragment}
   fragment UserDetailsFragment on User {
     ...UserBaseFragment
+
+    avatar {
+      url
+    }
   }
 `;
