@@ -5,4 +5,5 @@ dist
 .env
 .envrc
 src/apollo/types.ts
+src/apollo/client.ts
 src/apollo/apollo-helpers.ts

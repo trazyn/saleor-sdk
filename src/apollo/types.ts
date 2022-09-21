@@ -11535,6 +11535,13 @@ export type AccountConfirmMutationVariables = Exact<{
 
 export type AccountConfirmMutation = { confirmAccount: Maybe<{ user: Maybe<UserDetailsFragment>, errors: Array<AccountErrorFragment> }> };
 
+export type UserAvatarUpdateMutationVariables = Exact<{
+  image: Scalars['Upload'];
+}>;
+
+
+export type UserAvatarUpdateMutation = { userAvatarUpdate: Maybe<{ user: Maybe<UserDetailsFragment>, errors: Array<AccountErrorFragment> }> };
+
 export type UserWithoutDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 

@@ -41,11 +41,13 @@ import {
   RequestEmailChangeMutation,
   SetAccountDefaultAddressMutation,
   UpdateAccountAddressMutation,
+  UserAvatarUpdateMutation,
 } from "../apollo/types";
 import { AuthSDK } from "./auth";
 import { UserSDK } from "./user";
 import { State } from "./state";
 import { FetchConfig } from "../apollo";
+import { MutationUserAvatarUpdateArgs } from "../apollo/types";
 
 export interface SaleorClientInternals {
   apolloClient: ApolloClient<NormalizedCacheObject>;
@@ -106,6 +108,7 @@ export type RequestEmailChangeOpts = MutationRequestEmailChangeArgs;
 export type SetAccountDefaultAddressOpts = MutationAccountSetDefaultAddressArgs;
 export type UpdateAccountOpts = MutationAccountUpdateArgs;
 export type UpdateAccountAddressOpts = MutationAccountAddressUpdateArgs;
+export type UserAvatarUpdateOpts = MutationUserAvatarUpdateArgs;
 export type ConfirmAccountOpts = AccountConfirmMutationVariables;
 
 // Meethods results
@@ -171,3 +174,4 @@ export type UpdateAccountAddressResult = FetchResult<
 export type UpdateAccountAddressData = UpdateAccountAddressMutation["accountAddressUpdate"];
 export type ConfirmAccountResult = FetchResult<AccountConfirmMutation>;
 export type ConfirmAccountData = AccountConfirmMutation["confirmAccount"];
+export type UserAvatarUpdateResult = FetchResult<UserAvatarUpdateMutation>;

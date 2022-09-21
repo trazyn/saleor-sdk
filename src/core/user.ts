@@ -9,6 +9,7 @@ import {
   SET_ACCOUNT_DEFAULT_ADDRESS,
   UPDATE_ACCOUNT,
   UPDATE_ACCOUNT_ADDRESS,
+  USER_AVATAR_UPDATE,
 } from "../apollo/mutations";
 import {
   AccountConfirmMutation,
@@ -31,6 +32,8 @@ import {
   SetAccountDefaultAddressMutationVariables,
   UpdateAccountAddressMutation,
   UpdateAccountAddressMutationVariables,
+  UserAvatarUpdateMutation,
+  UserAvatarUpdateMutationVariables,
 } from "../apollo/types";
 import { auth } from "./auth";
 import {
@@ -46,6 +49,8 @@ import {
   SetAccountDefaultAddressResult,
   UpdateAccountAddressResult,
   UpdateAccountResult,
+  UserAvatarUpdateOpts,
+  UserAvatarUpdateResult,
 } from "./types";
 import {
   CreateAccountAddressOpts,
@@ -139,6 +144,10 @@ export interface UserSDK {
    * @returns Confirmed user account.
    */
   confirmAccount: (opts: ConfirmAccountOpts) => Promise<ConfirmAccountResult>;
+
+  userAvatarUpdate: (
+    opts: UserAvatarUpdateOpts
+  ) => Promise<UserAvatarUpdateResult>;
 }
 
 export const user = ({
@@ -269,6 +278,18 @@ export const user = ({
     return result;
   };
 
+  const userAvatarUpdate: UserSDK["userAvatarUpdate"] = async opts => {
+    const result = await client.mutate<
+      UserAvatarUpdateMutation,
+      UserAvatarUpdateMutationVariables
+    >({
+      mutation: USER_AVATAR_UPDATE,
+      variables: { ...opts },
+    });
+
+    return result;
+  };
+
   return {
     accountDelete,
     accountRequestDeletion,
@@ -280,5 +301,6 @@ export const user = ({
     updateAccountAddress,
     setAccountDefaultAddress,
     confirmAccount,
+    userAvatarUpdate,
   };
 };

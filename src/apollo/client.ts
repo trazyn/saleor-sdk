@@ -1,6 +1,5 @@
 import {
   ApolloClient,
-  createHttpLink,
   InMemoryCache,
   NormalizedCacheObject,
   Reference,
@@ -8,6 +7,8 @@ import {
 } from "@apollo/client";
 import fetch from "cross-fetch";
 import jwtDecode from "jwt-decode";
+// @ts-ignore
+import { createUploadLink } from "apollo-upload-client";
 
 import { TypedTypePolicies } from "./apollo-helpers";
 import { JWTToken } from "../core";
@@ -208,7 +209,7 @@ export const createApolloClient = (
   autologin: boolean,
   fetchOptions?: FetchConfig
 ): ApolloClient<NormalizedCacheObject> => {
-  const httpLink = createHttpLink({
+  const link = createUploadLink({
     fetch: createFetch(fetchOptions),
     uri: apiUrl,
     credentials: "include",
@@ -220,7 +221,7 @@ export const createApolloClient = (
 
   client = new ApolloClient({
     cache,
-    link: httpLink,
+    link,
   });
 
   /**

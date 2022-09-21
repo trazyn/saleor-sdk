@@ -420,3 +420,18 @@ export const CONFIRM_ACCOUNT = gql`
     }
   }
 `;
+
+export const USER_AVATAR_UPDATE = gql`
+  ${userDetailsFragment}
+  ${accountErrorFragment}
+  mutation userAvatarUpdate($image: Upload!) {
+    userAvatarUpdate(image: $image) {
+      user {
+        ...UserDetailsFragment
+      }
+      errors {
+        ...AccountErrorFragment
+      }
+    }
+  }
+`;
