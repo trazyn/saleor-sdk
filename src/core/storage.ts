@@ -53,6 +53,8 @@ export const createStorage = (autologinEnabled: boolean): void => {
   };
   const setAccessToken = (token: string | null): void => {
     accessToken = token;
+    // save token to session storage
+    sessionStorage.setItem("access_token", token || "");
   };
 
   const getAuthPluginId = (): string | null => authPluginId;

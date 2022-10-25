@@ -40,7 +40,11 @@ export const createSaleorClient = ({
   const client = {
     auth: authSDK,
     user: userSDK,
-    config: { channel: _channel, setChannel, autologin },
+    config: {
+      channel: _channel,
+      setChannel,
+      autologin,
+    },
     _internal: { apolloClient },
     getState: (): State => getState(apolloClient),
   };
