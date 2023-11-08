@@ -1,5 +1,5 @@
 {
-  "version": "0.4.4",
+  "version": "0.4.5",
   "license": "MIT",
   "homepage": "https://saleor.io/",
   "repository": {
@@ -112,7 +112,7 @@
   },
   "dependencies": {
     "apollo-upload-client": "^17.0.0",
-    "cross-fetch": "^3.1.4",
+    "cross-fetch": "^4.0.0",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2"
   }
